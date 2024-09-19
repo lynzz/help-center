@@ -1,5 +1,7 @@
 # Help Center
 
+⚠️ **Warning: This project is currently under development and not ready for production use. Use at your own risk.**
+
 This is a Help Center application using Turbo for multi-project management, including a Strapi backend API, Next.js frontend, and shadcn/ui as the frontend UI library.
 
 ## Getting Started
