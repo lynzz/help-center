@@ -1,0 +1,39 @@
+.codex-editor__redactor {
+  padding-bottom: 100px !important;
+}
+
+.ce-block__content {
+  max-width: 100% !important;
+}
+
+.ce-toolbar__content {
+  max-width: calc(100% - 50px) !important;
+}
+
+.cdx-block {
+  max-width: 100% !important;
+}
+
+.ce-paragraph {
+  padding: 0.5em 0;
+}
+
+.ce-header {
+  padding: 0.5em 0;
+  margin: 0;
+}
+
+.cdx-checklist__item-text {
+  flex-grow: 1;
+}
+
+.image-tool__image {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ce-code {
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+}

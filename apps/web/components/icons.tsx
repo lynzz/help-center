@@ -1,6 +1,7 @@
 import {
   AlertTriangle,
   ArrowRight,
+  Edit,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -46,6 +47,7 @@ export const Icons = {
   trash: Trash,
   employee: UserX2Icon,
   post: FileText,
+  article: Edit,
   page: File,
   media: Image,
   settings: Settings,

@@ -4,20 +4,11 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Next Shadcn Dashboard Starter',
-  description: 'Basic dashboard with Next.js and Shadcn'
+  title: 'Help Center Space',
+  description: ''
 };
 
-const sidebarNavItems = [
-  // ... 其他导航项
-  {
-    title: "Spaces",
-    href: "/dashboard/space",
-    icon: "layout", // 或者其他适合的图标
-  },
-]
-
-export default function DashboardLayout({
+export default function SpaceLayout({
   children
 }: {
   children: React.ReactNode;

@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "article",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "pid": {
+      "type": "integer"
+    },
+    "spaceId": {
+      "type": "integer"
+    },
+    "blocks": {
+      "type": "blocks"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

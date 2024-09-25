@@ -30,3 +30,10 @@ export interface FooterItem {
 export type MainNavItem = NavItemWithOptionalChildren;
 
 export type SidebarNavItem = NavItemWithChildren;
+
+export interface Article {
+  id: string
+  title: string
+  content: string
+  // 其他文章相关字段
+}
