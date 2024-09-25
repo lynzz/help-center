@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "dev:api": "turbo run dev --filter=@hc/api",
-    "dev:web": "turbo run dev --filter=@hc/web",
+    "dev:web": "turbo run dev --filter=@hc/web -- --port 3003",
     "build": "turbo run build",
     "lint": "turbo run lint"
   },

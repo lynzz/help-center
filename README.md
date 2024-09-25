@@ -2,7 +2,7 @@
 
 ⚠️ **Warning: This project is currently under development and not ready for production use. Use at your own risk.**
 
-This is a Help Center application using Turbo for multi-project management, including a Strapi backend API, Next.js frontend, and shadcn/ui as the frontend UI library.
+This is a Help Center application using Turbo for multi-project management, including a Strapi backend API and a React frontend with shadcn/ui and Vite.
 
 ## Getting Started
 
@@ -28,7 +28,7 @@ Ensure you have Node.js (version >= 14.0.0) and pnpm (version 8.15.4) installed.
      ```
      pnpm run dev:api
      ```
-   - Run Web frontend only:
+   - Run Web frontend only (will run on port 3003):
      ```
      pnpm run dev:web
      ```
@@ -47,20 +47,22 @@ Ensure you have Node.js (version >= 14.0.0) and pnpm (version 8.15.4) installed.
 
 - `apps/`: Contains all applications
   - `api/`: Strapi backend API
-  - `web/`: Next.js frontend
+  - `web/`: React frontend with Vite
 - `packages/`: Shared packages (if any)
 
 ## Tech Stack
 
 - Turbo: For multi-project management
 - Strapi: Backend API
-- Next.js: Frontend framework
-- shadcn/ui: Frontend UI library
+- React: Frontend library
+- Next.js: React framework for the web frontend
+- shadcn/ui: Frontend UI components
+- Vite: Frontend build tool and development server for non-Next.js parts
 - pnpm: Package manager
 
 ## Acknowledgements
 
-- [shadcnui-boilerplate](https://github.com/TinsFox/shadcnui-boilerplate): A boilerplate built with shadcn/ui for rapid development of modern web applications.
+- [next-shadcn-dashboard-starter](https://github.com/Kiranism/next-shadcn-dashboard-starter): Admin Dashboard Starter with Nextjs14 and shadcn ui.
 
 ## License
 
