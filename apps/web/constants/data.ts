@@ -118,27 +118,10 @@ export const navItems: NavItem[] = [
     label: '面板'
   },
   {
-    title: 'User',
-    href: '/dashboard/user',
-    icon: 'user',
-    label: '用户'
-  },
-  {
     title: 'Article',
     href: '/dashboard/article',
     icon: 'article',
     label: '内容'
   },
-  {
-    title: 'Profile',
-    href: '/dashboard/profile',
-    icon: 'profile',
-    label: 'profile'
-  },
-  {
-    title: 'Login',
-    href: '/',
-    icon: 'login',
-    label: 'login'
-  }
+  
 ];

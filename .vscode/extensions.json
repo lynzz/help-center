@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "formulahendry.auto-rename-tag",
+    "streetsidesoftware.code-spell-checker",
+    "naumovs.color-highlight",
+    "mikestead.dotenv",
+    "dsznajder.es7-react-js-snippets",
+    "github.vscode-pull-request-github",
+    "eamodio.gitlens",
+    "wix.vscode-import-cost",
+    "ms-vscode.vscode-typescript-next"
+  ]
+}

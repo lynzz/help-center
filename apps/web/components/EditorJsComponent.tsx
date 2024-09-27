@@ -1,95 +1,86 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import EditorJS, { I18nDictionary, OutputData } from '@editorjs/editorjs'
+import EditorJS, { I18nConfig, OutputData } from '@editorjs/editorjs'
 import Header from '@editorjs/header'
 import List from '@editorjs/list'
-import Checklist from '@editorjs/checklist'
 import Quote from '@editorjs/quote'
 import CodeTool from '@editorjs/code'
 import ImageTool from '@editorjs/image'
 import LinkTool from '@editorjs/link'
 import Paragraph from '@editorjs/paragraph'
+import { ofetch } from 'ofetch'
 
-const i18n: I18nDictionary = {
-  /**
-   * 多个工具通用的文案
-   */
-  toolNames: {
-    "Text": "文本",
-    "Heading": "标题",
-    "List": "列表",
-    "Checklist": "清单",
-    "Quote": "引用",
-    "Code": "代码",
-    "Image": "图片",
-    "Link": "链接",
-  },
-  /**
-   * 工具设置
-   */
-  toolSettings: {
-    "Heading": {
-      "Title": "标题",
-      "Subtitle": "副标题"
-    }
-  },
-  /**
-   * UI 文案
-   */
-  ui: {
-    "blockTunes": {
-      "toggler": {
-        "Click to tune": "点击调整",
-        "or drag to move": "或拖动"
+const i18n: I18nConfig = {
+  messages: {
+    ui: {
+      "blockTunes": {
+        "toggler": {
+          "Click to tune": "点击调整",
+          "or drag to move": "或拖动移动"
+        },
       },
-    },
-    "inlineToolbar": {
-      "converter": {
-        "Convert to": "转换为"
+      "inlineToolbar": {
+        "converter": {
+          "Convert to": "转换为"
+        }
+      },
+      "toolbar": {
+        "toolbox": {
+          "Add": "添加"
+        }
       }
     },
-    "toolbar": {
-      "toolbox": {
-        "Add": "添加"
+    toolNames: {
+      "Text": "文本",
+      "Heading": "标题",
+      "List": "列表",
+      "Checklist": "清单",
+      "Quote": "引用",
+      "Code": "代码",
+      "Image": "图片",
+      "Link": "链接"
+    },
+    tools: {
+      "link": {
+        "Add a link": "添加链接"
+      },
+      "image": {
+        "Select an Image": "选择图片",
+        "Caption": "图片说明",
+        "Select an image": "选择图片",
+        "With border": "带边框",
+        "Stretch image": "拉伸图片",
+        "With background": "带背景"
+      },
+      "code": {
+        "Enter a code": "输入代码"
+      },
+      "header": {
+        "Heading 1": "一级标题",
+        "Heading 2": "二级标题",
+        "Heading 3": "三级标题",
+        "Heading 4": "四级标题",
+        "Heading 5": "五级标题",
+        "Heading 6": "六级标题"
       }
-    }
-  },
-  /**
-   * 对于每个工具的文案
-   */
-  tools: {
-    "link": {
-      "Add a link": "添加链接"
     },
-    "image": {
-      "Select an Image": "选择图片",
-      "Caption": "图片说明",
-      "Select an image": "选择图片",
-      "With border": "带边框",
-      "Stretch image": "拉伸图片",
-      "With background": "带背景"
-    }
-  },
-  /**
-   * 提示文案
-   */
-  tunes: {
-    "delete": {
-      "Delete": "删除",
-      "Click to delete": "点击删除"
-    },
-    "moveUp": {
-      "Move up": "上移"
-    },
-    "moveDown": {
-      "Move down": "下移"
+    blockTunes: {
+      "delete": {
+        "Delete": "删除"
+      },
+      "moveUp": {
+        "Move up": "上移"
+      },
+      "moveDown": {
+        "Move down": "下移"
+      }
     }
   }
 }
 
 interface EditorJsComponentProps {
-  data?: any
+  data?: OutputData
   onChange: (data: OutputData, html: string) => void
 }
 
@@ -103,7 +94,6 @@ const EditorJsComponent: React.FC<EditorJsComponentProps> = ({ data, onChange })
         tools: {
           header: Header,
           list: List,
-          checklist: Checklist,
           quote: Quote,
           code: CodeTool,
           image: {
@@ -115,11 +105,10 @@ const EditorJsComponent: React.FC<EditorJsComponentProps> = ({ data, onChange })
                     const formData = new FormData()
                     formData.append('file', file)
 
-                    fetch('/api/upload', {
+                    ofetch('/api/upload', {
                       method: 'POST',
                       body: formData
                     })
-                      .then(response => response.json())
                       .then(result => {
                         // 直接使用 Strapi 返回的完整 URL
                         resolve({
@@ -145,7 +134,7 @@ const EditorJsComponent: React.FC<EditorJsComponentProps> = ({ data, onChange })
         onChange: async () => {
           const content = await editorRef.current?.save()
           const html = await editorDataToHtml(content)
-          onChange(content, html)
+          onChange(content as OutputData, html)
         },
         i18n: i18n,
       })
@@ -164,8 +153,9 @@ const EditorJsComponent: React.FC<EditorJsComponentProps> = ({ data, onChange })
 }
 
 // 辅助函数：将 Editor.js 数据转换为 HTML
-async function editorDataToHtml(data: OutputData): Promise<string> {
+async function editorDataToHtml(data?: OutputData): Promise<string> {
   let html = ''
+  if (!data) return html;
   for (const block of data.blocks) {
     switch (block.type) {
       case 'header':
