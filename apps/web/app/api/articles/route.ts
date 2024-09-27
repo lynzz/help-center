@@ -3,7 +3,9 @@ import { fetchFromStrapi, postToStrapi } from '@/lib/strapi';
 
 export async function GET() {
   try {
-    const data = await fetchFromStrapi('/api/articles');
+    const data = await fetchFromStrapi(
+      '/api/articles?field[0]=title&field[1]=pid&field[2]=documentId'
+    );
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error fetching articles:', error);
