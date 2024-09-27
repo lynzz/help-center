@@ -1,11 +1,20 @@
-import { create } from 'zustand';
+import { useCallback, useMemo, useState } from 'react';
 
-interface SidebarStore {
-  isMinimized: boolean;
+export type SidebarState = {
+  isOpen: boolean;
+  open: () => void;
+  close: () => void;
   toggle: () => void;
-}
+};
 
-export const useSidebar = create<SidebarStore>((set) => ({
-  isMinimized: false,
-  toggle: () => set((state) => ({ isMinimized: !state.isMinimized }))
-}));
+export const useSidebar = (): SidebarState => {
+  const [isOpen, setIsOpen] = useState(false);
+  return useMemo(() => {
+    return {
+      isOpen,
+      open: () => setIsOpen(true),
+      close: () => setIsOpen(false),
+      toggle: () => setIsOpen((prev) => !prev)
+    };
+  }, [isOpen]);
+};

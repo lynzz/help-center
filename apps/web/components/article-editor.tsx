@@ -134,7 +134,7 @@ export default function ArticleEditor({ initialArticles }: ArticleEditorProps) {
 
   return (
     <div className="flex h-screen">
-      <div className="w-1/4 p-4">
+      <div className="w-1/4 pr-4">
         <ScrollArea className="h-[calc(100vh-32px)]">
           <NavigationMenu.Root className="relative">
             <NavigationMenu.List className="flex flex-col space-y-1">

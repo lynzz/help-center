@@ -1,4 +1,3 @@
-import { fetchFromStrapi } from '@/lib/strapi';
 import ArticleEditor from '@/components/article-editor';
 import { Article } from '@/types/article';
 import { ofetch } from 'ofetch';

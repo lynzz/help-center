@@ -12,8 +12,8 @@ import {
 } from '@/components/ui/tooltip';
 import Providers from './providers';
 export const metadata: Metadata = {
-  title: 'Next Shadcn Dashboard Starter',
-  description: 'Basic dashboard with Next.js and Shadcn'
+  title: '文档管理',
+  description: '文档管理'
 };
 
 export default function DashboardLayout({
