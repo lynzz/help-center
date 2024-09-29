@@ -2,185 +2,167 @@ import { Group } from './types'
 
 export const GROUPS: Group[] = [
   {
-    name: 'ai',
-    title: 'AI',
-    commands: [
-      {
-        name: 'aiWriter',
-        label: 'AI Writer',
-        iconName: 'Sparkles',
-        description: 'Let AI finish your thoughts',
-        shouldBeHidden: editor => editor.isActive('columns'),
-        action: editor => editor.chain().focus().setAiWriter().run(),
-      },
-      {
-        name: 'aiImage',
-        label: 'AI Image',
-        iconName: 'Sparkles',
-        description: 'Generate an image from text',
-        shouldBeHidden: editor => editor.isActive('columns'),
-        action: editor => editor.chain().focus().setAiImage().run(),
-      },
-    ],
-  },
-  {
     name: 'format',
-    title: 'Format',
+    title: '常用',
     commands: [
       {
         name: 'heading1',
-        label: 'Heading 1',
+        label: 'H1',
         iconName: 'Heading1',
-        description: 'High priority section title',
+        description: '高优先级章节标题',
         aliases: ['h1'],
-        action: editor => {
-          editor.chain().focus().setHeading({ level: 1 }).run()
-        },
+        action: (editor) => {
+          editor.chain().focus().setHeading({ level: 1 }).run();
+        }
       },
       {
         name: 'heading2',
-        label: 'Heading 2',
+        label: 'H2',
         iconName: 'Heading2',
-        description: 'Medium priority section title',
+        description: '中优先级章节标题',
         aliases: ['h2'],
-        action: editor => {
-          editor.chain().focus().setHeading({ level: 2 }).run()
-        },
+        action: (editor) => {
+          editor.chain().focus().setHeading({ level: 2 }).run();
+        }
       },
       {
         name: 'heading3',
-        label: 'Heading 3',
+        label: 'H3',
         iconName: 'Heading3',
-        description: 'Low priority section title',
+        description: '低优先级章节标题',
         aliases: ['h3'],
-        action: editor => {
-          editor.chain().focus().setHeading({ level: 3 }).run()
-        },
+        action: (editor) => {
+          editor.chain().focus().setHeading({ level: 3 }).run();
+        }
       },
       {
         name: 'bulletList',
-        label: 'Bullet List',
+        label: '无序列表',
         iconName: 'List',
-        description: 'Unordered list of items',
+        description: '无序项目列表',
         aliases: ['ul'],
-        action: editor => {
-          editor.chain().focus().toggleBulletList().run()
-        },
+        action: (editor) => {
+          editor.chain().focus().toggleBulletList().run();
+        }
       },
       {
         name: 'numberedList',
-        label: 'Numbered List',
+        label: '有序列表',
         iconName: 'ListOrdered',
-        description: 'Ordered list of items',
+        description: '有序项目列表',
         aliases: ['ol'],
-        action: editor => {
-          editor.chain().focus().toggleOrderedList().run()
-        },
+        action: (editor) => {
+          editor.chain().focus().toggleOrderedList().run();
+        }
       },
       {
         name: 'taskList',
-        label: 'Task List',
+        label: '任务列表',
         iconName: 'ListTodo',
-        description: 'Task list with todo items',
+        description: '带待办事项的任务列表',
         aliases: ['todo'],
-        action: editor => {
-          editor.chain().focus().toggleTaskList().run()
-        },
+        action: (editor) => {
+          editor.chain().focus().toggleTaskList().run();
+        }
       },
       {
         name: 'toggleList',
-        label: 'Toggle List',
-        iconName: 'ListCollapse',
-        description: 'Toggles can show and hide content',
+        label: '折叠列表',
+        iconName: 'ToggleRight',
+        description: '可以显示和隐藏内容的折叠列表',
         aliases: ['toggle'],
-        action: editor => {
-          editor.chain().focus().setDetails().run()
-        },
+        action: (editor) => {
+          editor.chain().focus().setDetails().run();
+        }
       },
       {
         name: 'blockquote',
-        label: 'Blockquote',
+        label: '引用块',
         iconName: 'Quote',
-        description: 'Element for quoting',
-        action: editor => {
-          editor.chain().focus().setBlockquote().run()
-        },
+        description: '用于引用的元素',
+        action: (editor) => {
+          editor.chain().focus().setBlockquote().run();
+        }
       },
       {
         name: 'codeBlock',
-        label: 'Code Block',
+        label: '代码块',
         iconName: 'SquareCode',
-        description: 'Code block with syntax highlighting',
-        shouldBeHidden: editor => editor.isActive('columns'),
-        action: editor => {
-          editor.chain().focus().setCodeBlock().run()
-        },
-      },
-    ],
+        description: '带语法高亮的代码块',
+        shouldBeHidden: (editor) => editor.isActive('columns'),
+        action: (editor) => {
+          editor.chain().focus().setCodeBlock().run();
+        }
+      }
+    ]
   },
   {
     name: 'insert',
-    title: 'Insert',
+    title: '插入',
     commands: [
       {
         name: 'table',
-        label: 'Table',
+        label: '表格',
         iconName: 'Table',
-        description: 'Insert a table',
-        shouldBeHidden: editor => editor.isActive('columns'),
-        action: editor => {
-          editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: false }).run()
-        },
+        description: '插入表格',
+        shouldBeHidden: (editor) => editor.isActive('columns'),
+        action: (editor) => {
+          editor
+            .chain()
+            .focus()
+            .insertTable({ rows: 3, cols: 3, withHeaderRow: false })
+            .run();
+        }
       },
       {
         name: 'image',
-        label: 'Image',
+        label: '图片',
         iconName: 'Image',
-        description: 'Insert an image',
+        description: '插入图片',
         aliases: ['img'],
-        action: editor => {
-          editor.chain().focus().setImageUpload().run()
-        },
+        action: (editor) => {
+          editor.chain().focus().setImageUpload().run();
+        }
       },
       {
         name: 'columns',
-        label: 'Columns',
-        iconName: 'Columns2',
-        description: 'Add two column content',
+        label: '分栏',
+        iconName: 'Columns',
+        description: '添加两栏内容',
         aliases: ['cols'],
-        shouldBeHidden: editor => editor.isActive('columns'),
-        action: editor => {
+        shouldBeHidden: (editor) => editor.isActive('columns'),
+        action: (editor) => {
           editor
             .chain()
             .focus()
             .setColumns()
             .focus(editor.state.selection.head - 1)
-            .run()
-        },
+            .run();
+        }
       },
       {
         name: 'horizontalRule',
-        label: 'Horizontal Rule',
+        label: '水平分割线',
         iconName: 'Minus',
-        description: 'Insert a horizontal divider',
+        description: '插入水平分隔线',
         aliases: ['hr'],
-        action: editor => {
-          editor.chain().focus().setHorizontalRule().run()
-        },
+        action: (editor) => {
+          editor.chain().focus().setHorizontalRule().run();
+        }
       },
       {
         name: 'toc',
-        label: 'Table of Contents',
+        label: '目录',
         iconName: 'Book',
         aliases: ['outline'],
-        description: 'Insert a table of contents',
-        shouldBeHidden: editor => editor.isActive('columns'),
-        action: editor => {
-          editor.chain().focus().insertTableOfContents().run()
-        },
-      },
-    ],
-  },
-]
+        description: '插入目录',
+        shouldBeHidden: (editor) => editor.isActive('columns'),
+        action: (editor) => {
+          editor.chain().focus().insertTableOfContents().run();
+        }
+      }
+    ]
+  }
+];
 
 export default GROUPS

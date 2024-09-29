@@ -4,6 +4,7 @@ import { useState, useCallback, useMemo } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import { debounce } from 'lodash';
 import { ofetch } from 'ofetch';
+import { Doc as YDoc } from 'yjs';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
@@ -12,6 +13,8 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { Article, ArticleDetails } from '@/types/article';
 import { Spinner } from '@/components/ui/spinner';
+import { BlockEditor } from '@/components/BlockEditor';
+import { BlocksContent } from '@strapi/blocks-react-renderer';
 interface ArticleEditorProps {
   initialArticles: Article[];
 }
@@ -31,7 +34,7 @@ export default function ArticleEditor({ initialArticles }: ArticleEditorProps) {
           method: 'PUT',
           body: {
             title: article.title,
-            content: article.content
+            blocks: article.blocks
           }
         });
 
@@ -71,11 +74,11 @@ export default function ArticleEditor({ initialArticles }: ArticleEditorProps) {
     }
   };
 
-  const handleContentChange = (content: string) => {
+  const handleContentChange = (blocks: BlocksContent) => {
     if (selectedArticle) {
       const updatedArticle = {
         ...selectedArticle,
-        content
+        blocks
       };
       setSelectedArticle(updatedArticle);
       saveArticle(updatedArticle);
@@ -156,10 +159,13 @@ export default function ArticleEditor({ initialArticles }: ArticleEditorProps) {
               value={selectedArticle.title}
               onChange={handleTitleChange}
             />
-            <Separator className="my-4" />
             <ScrollArea className="flex-grow">
-              <TiptapEditor
+              {/* <TiptapEditor
                 content={selectedArticle.content}
+                onChange={handleContentChange}
+              /> */}
+              <BlockEditor
+                content={selectedArticle.blocks}
                 onChange={handleContentChange}
               />
             </ScrollArea>

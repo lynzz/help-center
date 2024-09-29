@@ -40,9 +40,12 @@ export const ImageUpload = Node.create({
     return {
       setImageUpload:
         () =>
-        ({ commands }) =>
-          commands.insertContent(`<div data-type="${this.name}"></div>`),
-    }
+        ({ chain }) => {
+          return chain()
+            .insertContent(`<div data-type="${this.name}"></div>`)
+            .run();
+        }
+    };
   },
 
   addNodeView() {

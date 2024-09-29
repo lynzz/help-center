@@ -1,6 +1,6 @@
 import { Node } from '@tiptap/pm/model'
 import { NodeSelection } from '@tiptap/pm/state'
-import { Editor } from '@tiptap/react'
+import { Editor } from '@tiptap/core';
 import { useCallback } from 'react'
 
 const useContentItemActions = (editor: Editor, currentNode: Node | null, currentNodePos: number) => {

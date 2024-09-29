@@ -8,4 +8,5 @@ export interface Article {
 
 export interface ArticleDetails extends Article {
   content: string;
+  blocks: any;
 }

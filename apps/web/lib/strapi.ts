@@ -38,6 +38,21 @@ export async function postToStrapi(endpoint: string, data: any) {
   }
 }
 
+export async function uploadToStrapi(data: any) {
+  try {
+    const response = await strapiApi('/api/upload', {
+      method: 'POST',
+      body: data
+    });
+    return {
+      url: `${strapiUrl}${response[0].url}`
+    };
+  } catch (error) {
+    console.error('Error uploading to Strapi:', error);
+    throw error;
+  }
+}
+
 export async function putToStrapi(endpoint: string, data: any) {
   try {
     const response = await strapiApi(endpoint, {

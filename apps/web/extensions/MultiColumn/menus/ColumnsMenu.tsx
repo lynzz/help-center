@@ -5,9 +5,9 @@ import { v4 as uuid } from 'uuid'
 
 import { MenuProps } from '@/components/menus/types'
 import { getRenderContainer } from '@/lib/utils/getRenderContainer'
-import { Toolbar } from '@/components/ui/Toolbar'
-import { ColumnLayout } from '../Columns'
-import { Icon } from '@/components/ui/Icon'
+import { Toolbar } from '@/components/ui/toolbar';
+import { ColumnLayout } from '../Columns';
+import { Icon } from '@/components/ui/icon';
 
 export const ColumnsMenu = ({ editor, appendTo }: MenuProps) => {
   const getReferenceClientRect = useCallback(() => {
@@ -53,27 +53,39 @@ export const ColumnsMenu = ({ editor, appendTo }: MenuProps) => {
       tippyOptions={{
         offset: [0, 8],
         popperOptions: {
-          modifiers: [{ name: 'flip', enabled: false }],
+          modifiers: [{ name: 'flip', enabled: false }]
         },
         getReferenceClientRect,
         appendTo: () => appendTo?.current,
         plugins: [sticky],
-        sticky: 'popper',
+        sticky: 'popper'
       }}
     >
       <Toolbar.Wrapper>
-        <Toolbar.Button tooltip="Sidebar left" active={isColumnLeft} onClick={onColumnLeft}>
+        <Toolbar.Button
+          tooltip="Sidebar left"
+          active={isColumnLeft}
+          onClick={onColumnLeft}
+        >
           <Icon name="PanelLeft" />
         </Toolbar.Button>
-        <Toolbar.Button tooltip="Two columns" active={isColumnTwo} onClick={onColumnTwo}>
-          <Icon name="Columns2" />
+        <Toolbar.Button
+          tooltip="Two columns"
+          active={isColumnTwo}
+          onClick={onColumnTwo}
+        >
+          <Icon name="Columns" />
         </Toolbar.Button>
-        <Toolbar.Button tooltip="Sidebar right" active={isColumnRight} onClick={onColumnRight}>
+        <Toolbar.Button
+          tooltip="Sidebar right"
+          active={isColumnRight}
+          onClick={onColumnRight}
+        >
           <Icon name="PanelRight" />
         </Toolbar.Button>
       </Toolbar.Wrapper>
     </BaseBubbleMenu>
-  )
+  );
 }
 
 export default ColumnsMenu

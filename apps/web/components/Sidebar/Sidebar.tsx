@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import { memo, useCallback } from 'react'
-import { Editor } from '@tiptap/react'
+import { Editor } from '@tiptap/core';
 import { TableOfContents } from '../TableOfContents'
 
 export const Sidebar = memo(
